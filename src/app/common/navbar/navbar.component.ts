@@ -7,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  logo: string;
+
+  constructor() {
+    this.logo = '/assets/logo_superquiz.png';
+  }
 
   ngOnInit() {
   }
