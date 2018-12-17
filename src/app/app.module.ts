@@ -3,9 +3,10 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { FooterComponent } from './common/footer/footer.component';
 
 @NgModule({
-  declarations: [ AppComponent, NavbarComponent ],
+  declarations: [ AppComponent, NavbarComponent, FooterComponent ],
   imports: [ BrowserModule ],
   bootstrap: [AppComponent]
 })
