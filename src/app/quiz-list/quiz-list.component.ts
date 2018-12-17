@@ -12,15 +12,11 @@ export class QuizListComponent implements OnInit {
   quizzes: Array<Quiz>;
 
   constructor() {
-    this.quizzes = QUIZZES;
+    this.quizzes = [...QUIZZES];
   }
 
   onAddClick() {
-    this.quizzes.push(new Quiz());
-  }
-
-  onRemoveClick() {
-    this.quizzes.splice(-1, 1);
+    this.quizzes.push(new Quiz({title: 'Quizz bidon'}));
   }
 
   ngOnInit() {
