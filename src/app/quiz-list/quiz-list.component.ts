@@ -15,6 +15,14 @@ export class QuizListComponent implements OnInit {
     this.quizzes = QUIZZES;
   }
 
+  onAddClick() {
+    this.quizzes.push(new Quiz());
+  }
+
+  onRemoveClick() {
+    this.quizzes.splice(-1, 1);
+  }
+
   ngOnInit() {
   }
 
