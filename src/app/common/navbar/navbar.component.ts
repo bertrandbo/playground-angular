@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../models/user';
+import { NavbarItem } from 'src/app/models/navbar-item';
 
 @Component({
   selector: 'app-navbar',
@@ -9,8 +10,8 @@ import { User } from '../../models/user';
 export class NavbarComponent implements OnInit {
 
   logo: string;
-
   user: User;
+  navItems: Array<NavbarItem>;
 
   constructor() {
     this.logo = '/assets/logo_superquiz.png';
@@ -18,6 +19,12 @@ export class NavbarComponent implements OnInit {
       name: `Bob l'éponge`,
       email: 'bob@eponge.net'
     });
+    this.navItems  = [
+      {label: 'Accueil', url: '#'},
+      {label: 'Quizzes', url: '#'},
+      {label: 'Admin', url: '#'},
+      {label: 'Login', url: '#'}
+    ];
   }
 
   ngOnInit() {

@@ -10,11 +10,8 @@
       <a class="navbar-brand"><img [src]="logo"></a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-        <li><a href="#">Accueil</a></li>
-        <li><a href="#">Quizzes</a></li>
-        <li><a href="#">Admin</a></li>
-        <li><a href="#">Login</a></li>
+      <ul *ngFor="let item of navItems" class="nav navbar-nav">
+        <li><a [href]="item.url">{{item.label}}</a></li>
       </ul>
       <p class="navbar-text navbar-right">Identifié comme <a [href]="'mailto:' + user.email" class="navbar-link">{{ user.name }}</a></p>
     </div><!--/.nav-collapse -->
