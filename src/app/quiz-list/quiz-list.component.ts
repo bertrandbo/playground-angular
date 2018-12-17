@@ -15,11 +15,12 @@ export class QuizListComponent implements OnInit {
     this.quizzes = [...QUIZZES];
   }
 
-  onAddClick() {
-    this.quizzes.push(new Quiz({title: 'Quizz bidon'}));
+  ngOnInit() {
+
   }
 
-  ngOnInit() {
+  onAddClick() {
+    this.quizzes.push(new Quiz({title: 'Quizz bidon'}));
   }
 
 }
