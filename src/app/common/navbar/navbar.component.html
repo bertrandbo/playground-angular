@@ -16,7 +16,7 @@
         <li><a href="#">Admin</a></li>
         <li><a href="#">Login</a></li>
       </ul>
-      <p class="navbar-text navbar-right">Identifié comme <a href="#" class="navbar-link">Bob l'éponge</a></p>
+      <p class="navbar-text navbar-right">Identifié comme <a [href]="'mailto:' + user.email" class="navbar-link">{{ user.name }}</a></p>
     </div><!--/.nav-collapse -->
   </div>
 </nav>
