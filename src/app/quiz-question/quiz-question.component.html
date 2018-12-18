@@ -11,7 +11,7 @@
       </div>
       <div class="list-group">
         <div>
-          <a class="list-group-item" *ngFor="let choice of question.choices">
+          <a class="list-group-item" (click)="clickChoice(choice)" [class.active]="answer.hasChoice(choice)" *ngFor="let choice of question.choices">
             <h4 class="list-group-item-heading">{{ choice.text }}</h4>
           </a>
         </div>

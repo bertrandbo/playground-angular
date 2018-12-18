@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import {Question} from '../models/question';
 import {Answer} from '../models/answer';
+import { Choice } from '../models/choice';
 
 @Component({
   selector: 'app-quiz-question',
@@ -47,5 +48,13 @@ export class QuizQuestionComponent implements OnInit {
       questionId: 35,
       multipleChoicesAllowed: false
     });
+  }
+
+  clickChoice(choice: Choice) {
+    if (this.answer.hasChoice(choice)) {
+      this.answer.removeChoice(choice);
+    } else {
+      this.answer.addChoice(choice);
+    }
   }
 }
