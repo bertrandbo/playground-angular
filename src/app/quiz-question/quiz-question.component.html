@@ -1,7 +1,6 @@
 <div class="row">
 
   <div class="col-md-8">
-
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title">Question</h3>
@@ -16,18 +15,21 @@
           </a>
         </div>
         <div class="list-group-item pull-right">
-          <button class="btn btn-lg {{ submit.state }}" [disabled]="!answer.isAnswered() || submit.submitted" (click)="submit.submitAnswer(answer)">
-            {{ submit.label }}
+          <button class="btn btn-lg btn-primary" type="button" (click)="gotoNextQuestionTEMP()">
+            Change de question
+          </button>
+          <button class="btn btn-lg {{ submitClass }}" type="submit" [disabled]="!answer.isAnswered() || isSubmitted" (click)="submitAnswer(answer)">
+            {{ submitLabel }}
           </button>
         </div>
       </div>
     </div>
 
-    <p *ngIf="!answer.isCorrect && submit.submitted">
+    <p *ngIf="!answer.isCorrect && isSubmitted">
       La bonne réponse était {{ question.getCorrectChoices() }}
     </p>
 
-    <p *ngIf="submit.submitted">
+    <p *ngIf="isSubmitted">
       {{ question.explanation }}
     </p>
 

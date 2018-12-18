@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import {Question} from '../models/question';
 import {Answer} from '../models/answer';
 import { Choice } from '../models/choice';
-import { SubmitButton } from './submit-button';
 
 @Component({
   selector: 'app-quiz-question',
@@ -29,11 +28,20 @@ export class QuizQuestionComponent implements OnInit {
     multipleChoicesAllowed: false
   });
 
-  submit = new SubmitButton();
+  isSubmitted: boolean;
 
   constructor() { }
 
   ngOnInit() {
+    this.isSubmitted = this.answer.isAnswered();
+  }
+
+  get submitLabel() {
+    return !this.isSubmitted ? 'Soumettre' : this.answer.isCorrect ? 'CORRECT' : 'INCORRECT';
+  }
+
+  get submitClass() {
+    return !this.isSubmitted ? 'btn-primary' : this.answer.isCorrect ? 'btn-success' : 'btn-danger';
   }
 
   // Charge une nouvelle question et une nouvelle réponse.
@@ -51,10 +59,15 @@ export class QuizQuestionComponent implements OnInit {
       questionId: 35,
       multipleChoicesAllowed: false
     });
+    this.isSubmitted = false;
+  }
+
+  submitAnswer(answer: Answer) {
+    this.isSubmitted = true; // Flag pour éviter de soumettre une réponse plusieurs fois
   }
 
   clickChoice(choice: Choice) {
-    if (this.submit.submitted) {
+    if (this.isSubmitted) {
       // Empêche de changer la réponse après avoir soumis
       return;
     }
