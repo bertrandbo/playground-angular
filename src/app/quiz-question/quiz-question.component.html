@@ -16,8 +16,8 @@
           </a>
         </div>
         <div class="list-group-item pull-right">
-          <button class="btn btn-lg btn-primary">
-            Soumettre
+          <button class="btn btn-lg {{ submit.state }}" [disabled]="!answer.isAnswered() || submit.submitted" (click)="submit.submitAnswer(answer)">
+            {{ submit.label }}
           </button>
         </div>
       </div>

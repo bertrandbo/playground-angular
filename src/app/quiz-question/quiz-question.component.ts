@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import {Question} from '../models/question';
 import {Answer} from '../models/answer';
 import { Choice } from '../models/choice';
+import { SubmitButton } from './submit-button';
 
 @Component({
   selector: 'app-quiz-question',
@@ -28,6 +29,8 @@ export class QuizQuestionComponent implements OnInit {
     multipleChoicesAllowed: false
   });
 
+  submit = new SubmitButton();
+
   constructor() { }
 
   ngOnInit() {
@@ -51,6 +54,11 @@ export class QuizQuestionComponent implements OnInit {
   }
 
   clickChoice(choice: Choice) {
+    if (this.submit.submitted) {
+      // Empêche de changer la réponse après avoir soumis
+      return;
+    }
+    // Ajoute/Supprime le choix pour que la sélection se mette à jour visuellement
     if (this.answer.hasChoice(choice)) {
       this.answer.removeChoice(choice);
     } else {
