@@ -23,6 +23,10 @@
       </div>
     </div>
 
+    <p *ngIf="!answer.isCorrect && submit.submitted">
+      La bonne réponse était {{ question.getCorrectChoices() }}
+    </p>
+
   </div>
 
 </div>
