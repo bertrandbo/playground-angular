@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { User } from '../../models/user';
 import { NavbarItem } from 'src/app/models/navbar-item';
 
@@ -9,12 +9,11 @@ import { NavbarItem } from 'src/app/models/navbar-item';
 })
 export class NavbarComponent implements OnInit {
 
-  logo: string;
+  @Input() logo: string;
   user: User;
   navItems: Array<NavbarItem>;
 
   constructor() {
-    this.logo = '/assets/logo_superquiz.png';
     this.user = new User({
       name: `Bob l'éponge`,
       email: 'bob@eponge.net'
