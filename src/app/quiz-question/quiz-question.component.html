@@ -15,9 +15,6 @@
           </a>
         </div>
         <div class="list-group-item pull-right">
-          <button class="btn btn-lg btn-primary" type="button" (click)="gotoNextQuestionTEMP()">
-            Change de question
-          </button>
           <button class="btn btn-lg {{ submitClass }}" type="submit" [disabled]="!answer.isAnswered() || isSubmitted" (click)="submitAnswer(answer)">
             {{ submitLabel }}
           </button>
