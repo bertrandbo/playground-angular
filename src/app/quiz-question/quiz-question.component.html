@@ -27,6 +27,10 @@
       La bonne réponse était {{ question.getCorrectChoices() }}
     </p>
 
+    <p *ngIf="submit.submitted">
+      {{ question.explanation }}
+    </p>
+
   </div>
 
 </div>
