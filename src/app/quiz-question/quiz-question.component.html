@@ -7,18 +7,14 @@
         <h3 class="panel-title">Question</h3>
       </div>
       <div class="panel-body">
-        <p style="font-size:1.5em;">QUESTION_TITLE</p>
+        <p style="font-size:1.5em;">{{ question.title }}</p>
       </div>
       <div class="list-group">
-        <a class="list-group-item">
-          <h4 class="list-group-item-heading">QUESTION_CHOICE_1</h4>
-        </a>
-        <a class="list-group-item">
-          <h4 class="list-group-item-heading">QUESTION_CHOICE_2</h4>
-        </a>
-        <a class="list-group-item">
-          <h4 class="list-group-item-heading">QUESTION_CHOICE_3</h4>
-        </a>
+        <div>
+          <a class="list-group-item" *ngFor="let choice of question.choices">
+            <h4 class="list-group-item-heading">{{ choice.text }}</h4>
+          </a>
+        </div>
         <div class="list-group-item pull-right">
           <button class="btn btn-lg btn-primary">
             Soumettre
