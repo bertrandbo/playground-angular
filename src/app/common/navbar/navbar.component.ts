@@ -11,19 +11,13 @@ export class NavbarComponent implements OnInit {
 
   @Input() logo: string;
   user: User;
-  navItems: Array<NavbarItem>;
+  @Input() navItems: Array<NavbarItem>;
 
   constructor() {
     this.user = new User({
       name: `Bob l'éponge`,
       email: 'bob@eponge.net'
     });
-    this.navItems  = [
-      {label: 'Accueil', url: '#'},
-      {label: 'Quizzes', url: '#'},
-      {label: 'Admin', url: '#'},
-      {label: 'Login', url: '#'}
-    ];
   }
 
   ngOnInit() {
