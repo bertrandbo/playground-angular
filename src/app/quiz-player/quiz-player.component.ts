@@ -2,18 +2,19 @@ import { Component, OnInit } from '@angular/core';
 import { Quiz } from '../models/quiz';
 import { Answer } from '../models/answer';
 import { Question } from '../models/question';
-import { AnswersState } from '../services/quiz-state-manager.service';
+import { AnswersState, QuizStateManager } from '../services/quiz-state-manager.service';
 import { QuizService } from '../services/quiz.service';
 
 @Component({
   selector: 'app-quiz-player',
   templateUrl: './quiz-player.component.html',
-  styles: []
+  styles: [],
+  providers: [
+    QuizStateManager
+  ]
 })
 export class QuizPlayerComponent implements OnInit {
 
-  private quizzes: Array<Quiz>;
-  private currentQuestionIndex: number;
   currentQuiz: Quiz;
   currentQuestion: Question;
   currentAnswer: Answer;
@@ -21,46 +22,37 @@ export class QuizPlayerComponent implements OnInit {
 
   isStarted = false;
 
-  constructor(private quizService: QuizService) {}
+  constructor(
+    private quizService: QuizService,
+    private quizStateManager: QuizStateManager
+  ) {}
 
   ngOnInit() {
-    this.currentAnswers = {};
-    // On en a besoin que d'un seul pour le moment
     this.currentQuiz = this.quizService.loadQuiz(32);
-    this.setNewQuestion(0);
-  }
-
-  previousQuestion() {
-    this.setNewQuestion(this.currentQuestionIndex - 1);
-  }
-
-  nextQuestion() {
-    this.setNewQuestion(this.currentQuestionIndex + 1);
-  }
-
-  private setNewQuestion(newQuestionIndex: number) {
-    this.currentQuestionIndex = newQuestionIndex;
-    this.currentQuestion = this.currentQuiz.questions[this.currentQuestionIndex];
-    this.currentAnswer = this.getAnswer(this.currentQuestion);
-  }
-
-  private getAnswer(question: Question): Answer {
-    if (this.currentAnswers.hasOwnProperty(question.id)) {
-      return this.currentAnswers[question.id];
-    } else {
-      return new Answer({
-        questionId: question.id,
-        multipleChoicesAllowed: false
-      });
-    }
-  }
-
-  saveAnswer(answer: Answer) {
-    this.currentAnswers[answer.questionId] = answer;
+    this.quizStateManager.setQuiz(this.currentQuiz);
+    this.currentAnswers = this.quizStateManager.getAllAnswers();
   }
 
   startQuiz() {
     this.isStarted = true;
+    this.setNewQuestion(this.quizStateManager.getFirstQA());
+  }
+
+  previousQuestion() {
+    this.setNewQuestion(this.quizStateManager.getPreviousQA());
+  }
+
+  nextQuestion() {
+    this.setNewQuestion(this.quizStateManager.getNextQA());
+  }
+
+  private setNewQuestion(newQA: any) {
+    this.currentQuestion = newQA.question;
+    this.currentAnswer = newQA.answer;
+  }
+
+  saveAnswer(answer: Answer) {
+    this.quizStateManager.saveAnswer(answer);
   }
 
 }
