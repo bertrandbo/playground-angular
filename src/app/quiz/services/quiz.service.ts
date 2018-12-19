@@ -14,7 +14,10 @@ export class QuizService {
   ) { }
 
   loadQuizzes(): Observable<Array<Quiz>> {
-    return this.http.get<Array<Quiz>>(`${this.settings.backendUrl}/quizzes`);
+    return this.http.get<Array<Quiz>>(`${this.settings.backendUrl}/quizzes`).map(
+      // re-hydrate
+      (quizArray: any[]) => quizArray.map(quizData => new Quiz(quizData))
+    );
   }
 
   loadQuiz(quizId: number): Observable<Quiz> {
