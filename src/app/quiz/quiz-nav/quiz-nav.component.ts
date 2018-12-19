@@ -1,9 +1,7 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-
-import {Quiz} from '../models/quiz';
-import {Question} from '../models/question';
-import {QuizSubmission} from '../models/quiz-submission';
-import { Answer } from '../models/answer';
+import { Quiz } from 'src/app/models/quiz';
+import { Question } from 'src/app/models/question';
+import { QuizSubmission } from 'src/app/models/quiz-submission';
 
 @Component({
   selector: 'app-quiz-nav',

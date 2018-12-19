@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/of';
 
-import { Quiz } from '../models/quiz';
+import { Quiz } from '../../models/quiz';
 
 @Injectable()
 export class QuizResolver implements Resolve<Quiz> {

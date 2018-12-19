@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Quiz } from '../models/quiz';
-import { Answer } from '../models/answer';
-import { Question } from '../models/question';
 import { AnswersState, QuizStateManager } from '../services/quiz-state-manager.service';
 import { QuizService } from '../services/quiz.service';
+import { Quiz } from 'src/app/models/quiz';
+import { Question } from 'src/app/models/question';
+import { Answer } from 'src/app/models/answer';
 
 @Component({
   selector: 'app-quiz-player',
