@@ -8,9 +8,9 @@ import { NavbarItem } from './models/navbar-item';
 export class AppComponent {
 
   navItemsData: NavbarItem[] = [
-    {label: 'Accueil', url: '#'},
-    {label: 'Quizzes', url: '#'},
-    {label: 'Admin', url: '#'},
-    {label: 'Login', url: '#'}
+    {label: 'Accueil', url: 'home'},
+    {label: 'Quizzes', url: 'quizzes'},
+    {label: 'Admin', url: ''},
+    {label: 'Login', url: ''}
   ];
 }

@@ -11,7 +11,7 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul *ngFor="let item of navItems" class="nav navbar-nav">
-        <li><a [href]="item.url">{{item.label}}</a></li>
+        <li><a [routerLink]="item.url">{{item.label}}</a></li>
       </ul>
       <p class="navbar-text navbar-right">Identifié comme <a [href]="'mailto:' + user.email" class="navbar-link">{{ user.name }}</a></p>
     </div><!--/.nav-collapse -->

@@ -4,6 +4,7 @@ import { QuizService } from '../services/quiz.service';
 import { Quiz } from 'src/app/models/quiz';
 import { Question } from 'src/app/models/question';
 import { Answer } from 'src/app/models/answer';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-quiz-player',
@@ -24,11 +25,14 @@ export class QuizPlayerComponent implements OnInit {
 
   constructor(
     private quizService: QuizService,
-    private quizStateManager: QuizStateManager
+    private quizStateManager: QuizStateManager,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
-    this.quizService.loadQuiz(32).subscribe(quiz => this.initQuiz(quiz));
+    this.quizService.loadQuiz(
+      Number(this.route.snapshot.paramMap.get('quizId'))
+    ).subscribe(quiz => this.initQuiz(quiz));
   }
 
   private initQuiz(quiz: Quiz) {
