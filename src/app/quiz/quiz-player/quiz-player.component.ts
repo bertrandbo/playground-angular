@@ -28,7 +28,11 @@ export class QuizPlayerComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.currentQuiz = this.quizService.loadQuiz(32);
+    this.quizService.loadQuiz(32).subscribe(quiz => this.initQuiz(quiz));
+  }
+
+  private initQuiz(quiz: Quiz) {
+    this.currentQuiz = quiz;
     this.quizStateManager.setQuiz(this.currentQuiz);
     this.currentAnswers = this.quizStateManager.getAllAnswers();
   }

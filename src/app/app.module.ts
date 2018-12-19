@@ -6,6 +6,7 @@ import { NavbarComponent } from './common/navbar/navbar.component';
 import { FooterComponent } from './common/footer/footer.component';
 import { HomeComponent } from './common/home/home.component';
 import { QuizModule } from './quiz/quiz.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,7 @@ import { QuizModule } from './quiz/quiz.module';
     FooterComponent,
     HomeComponent
   ],
-  imports: [ QuizModule, BrowserModule ],
+  imports: [ QuizModule, BrowserModule, HttpClientModule ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

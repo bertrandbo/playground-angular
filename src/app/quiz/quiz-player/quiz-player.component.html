@@ -1,3 +1,4 @@
+<ng-container [ngIf]="currentQuiz">
 <h2>{{ currentQuiz.title }}</h2>
 <p>{{ currentQuiz.description }}</p>
 <p *ngIf="!isStarted else showQuestion">
@@ -5,6 +6,7 @@
     Démarrer le quiz
   </button>
 </p>
+</ng-container>
 
 <ng-template #showQuestion>
 <p>
