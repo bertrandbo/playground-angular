@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Quiz } from '../models/quiz';
-import { QUIZZES } from '../data/quizzes';
 import { Answer } from '../models/answer';
 import { Question } from '../models/question';
 import { AnswersState } from '../services/quiz-state-manager.service';
+import { QuizService } from '../services/quiz.service';
 
 @Component({
   selector: 'app-quiz-player',
@@ -15,20 +15,18 @@ export class QuizPlayerComponent implements OnInit {
   private quizzes: Array<Quiz>;
   private currentQuestionIndex: number;
   currentQuiz: Quiz;
-  isStarted = false;
   currentQuestion: Question;
   currentAnswer: Answer;
   currentAnswers: AnswersState;
 
-  constructor() {
-    // Bouchon temporaire
-    this.quizzes = [...QUIZZES];
-  }
+  isStarted = false;
+
+  constructor(private quizService: QuizService) {}
 
   ngOnInit() {
     this.currentAnswers = {};
     // On en a besoin que d'un seul pour le moment
-    this.currentQuiz = this.quizzes[0];
+    this.currentQuiz = this.quizService.loadQuiz(32);
     this.setNewQuestion(0);
   }
 

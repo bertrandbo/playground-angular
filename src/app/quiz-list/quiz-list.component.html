@@ -1,16 +1,16 @@
-<h1>Liste des quizzes ({{ quizzes.length }})</h1>
+<h1>Liste des Quizs ({{ quizList.length }})</h1>
 
 <div class="row">
   <p>
     <button (click)="onAddClick()" class="btn btn-default">Ajouter</button>
-    <button (click)="quizzes.pop()" class="btn btn-default">Supprimer</button>
+    <button (click)="quizList.pop()" class="btn btn-default">Supprimer</button>
   </p>
 </div>
 
 <div class="row">
 
-  <div class="col-sm-6" *ngFor="let quizz of quizzes">
-    <app-quiz-item [item]="quizz"></app-quiz-item>
+  <div class="col-sm-6" *ngFor="let quiz of quizList">
+    <app-quiz-item [item]="quiz"></app-quiz-item>
   </div>
 
 </div>

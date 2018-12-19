@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Quiz } from '../models/quiz';
-import { QUIZZES } from '../data/quizzes';
+import { QuizService } from '../services/quiz.service';
 
 @Component({
   selector: 'app-quiz-list',
@@ -9,18 +9,17 @@ import { QUIZZES } from '../data/quizzes';
 })
 export class QuizListComponent implements OnInit {
 
-  quizzes: Array<Quiz>;
+  quizList: Array<Quiz>;
 
-  constructor() {
-    this.quizzes = [...QUIZZES];
+  constructor(private quizService: QuizService) {
   }
 
   ngOnInit() {
-
+    this.quizList = this.quizService.loadQuizzes();
   }
 
   onAddClick() {
-    this.quizzes.push(new Quiz({title: 'Quizz bidon'}));
+    this.quizList.push(new Quiz({title: 'Quizz bidon'}));
   }
 
 }
