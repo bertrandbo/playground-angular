@@ -6,6 +6,7 @@ import { QuizItemComponent } from './quiz-item/quiz-item.component';
 import { QuizPlayerComponent } from './quiz-player/quiz-player.component';
 import { QuizNavComponent } from './quiz-nav/quiz-nav.component';
 import { RouterModule } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 const routes = [
   { path: 'quizzes', component: QuizListComponent},
@@ -26,6 +27,10 @@ const routes = [
   ],
   exports: [
     QuizPlayerComponent
+  ],
+  providers: [
+    { provide: 'JSON_SERVER_URL', useValue: 'http://localhost:3004' }, // Soit la valeur en direct
+    { provide: 'SETTINGS', useValue: environment } // Soit, on balance l'environnement
   ]
 })
 export class QuizModule { }

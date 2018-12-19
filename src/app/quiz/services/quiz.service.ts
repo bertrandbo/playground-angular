@@ -1,6 +1,5 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { Quiz } from '../../models/quiz';
-import { QUIZZES } from '../../data/quizzes';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -9,17 +8,20 @@ import { Observable } from 'rxjs';
 })
 export class QuizService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+              @Inject('JSON_SERVER_URL') private url: string,
+              @Inject('SETTINGS') private settings: any
+  ) { }
 
   loadQuizzes(): Observable<Array<Quiz>> {
-    return this.http.get<Array<Quiz>>('http://localhost:3004/quizzes');
+    return this.http.get<Array<Quiz>>(`${this.settings.backendUrl}/quizzes`);
   }
 
   loadQuiz(quizId: number): Observable<Quiz> {
-    return this.http.get<Quiz>(`http://localhost:3004/quizzes/${quizId}`);
+    return this.http.get<Quiz>(`${this.url}/quizzes/${quizId}`);
   }
 
   deleteQuiz(quizId: number): Observable<any> {
-    return this.http.delete(`http://localhost:3004/quizzes/${quizId}`);
+    return this.http.delete(`${this.url}/quizzes/${quizId}`);
   }
 }
