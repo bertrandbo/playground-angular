@@ -13,6 +13,7 @@ import { RouterModule } from '@angular/router';
 const routes = [
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'admin', loadChildren: '../app/admin/admin.module#AdminModule' },
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 

@@ -10,7 +10,7 @@ export class AppComponent {
   navItemsData: NavbarItem[] = [
     {label: 'Accueil', url: 'home'},
     {label: 'Quizzes', url: 'quizzes'},
-    {label: 'Admin', url: ''},
+    {label: 'Admin', url: 'admin'},
     {label: 'Login', url: ''}
   ];
 }
